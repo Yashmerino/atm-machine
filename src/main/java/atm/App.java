@@ -24,7 +24,7 @@ public class App extends Application {
 			String css = this.getClass().getResource("/Styles.css").toExternalForm();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(css);
-			
+
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("ATM Machine");
 			primaryStage.setResizable(false);
