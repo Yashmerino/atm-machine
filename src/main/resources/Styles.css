@@ -1,0 +1,14 @@
+.root{
+	
+}
+
+.label{
+	-fx-font-size: 12px;
+	-fx-font-family: "Lucida Console";
+	-fx-text-fill: "black";
+	-fx-alignment: center;
+}
+
+#labelInitialMessage{
+	-fx-font-size: 20px;
+}
