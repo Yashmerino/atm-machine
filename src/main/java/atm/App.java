@@ -1,3 +1,5 @@
+package atm;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,8 +20,8 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("Scene1.fxml"));
-			String css = this.getClass().getResource("Styles.css").toExternalForm();
+			Parent root = FXMLLoader.load(getClass().getResource("/Scene1.fxml"));
+			String css = this.getClass().getResource("/Styles.css").toExternalForm();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(css);
 
