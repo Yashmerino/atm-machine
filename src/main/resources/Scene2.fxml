@@ -8,8 +8,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atm.CardController">
    <children>
       <Button fx:id="buttonLogout" layoutX="682.0" layoutY="540.0" mnemonicParsing="false" onAction="#changeCard" prefHeight="29.0" prefWidth="84.0" text="Logout" />
-      <Button fx:id="buttonWithdraw" layoutX="35.0" layoutY="402.0" mnemonicParsing="false" onAction="#changeCard" prefHeight="29.0" prefWidth="84.0" text="Withdraw" />
-      <Button fx:id="buttonDeposit" layoutX="35.0" layoutY="440.0" mnemonicParsing="false" onAction="#changeCard" prefHeight="29.0" prefWidth="84.0" text="Deposit" />
+      <Button fx:id="buttonWithdraw" layoutX="35.0" layoutY="402.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Withdraw" />
+      <Button fx:id="buttonDeposit" layoutX="35.0" layoutY="440.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Deposit" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1c991c" height="363.0" layoutX="35.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="565.0" />
       <Label fx:id="labelBalance" layoutX="42.0" layoutY="39.0" text="Balance: 0" />
       <Label fx:id="labelTitle" alignment="CENTER" layoutY="5.0" prefHeight="18.0" prefWidth="800.0" text="ATM Machine" textAlignment="CENTER" />
@@ -27,9 +27,12 @@
       <Button fx:id="buttonDot" layoutX="336.0" layoutY="540.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="." />
       <Button fx:id="button0" layoutX="381.0" layoutY="540.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="0" />
       <Button fx:id="button00" layoutX="426.0" layoutY="540.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="00" />
-      <Button fx:id="buttonEnter" layoutX="239.0" layoutY="540.0" mnemonicParsing="false" onAction="#changeCard" prefHeight="29.0" prefWidth="84.0" text="Enter" />
-      <Button fx:id="buttonCancel" layoutX="239.0" layoutY="503.0" mnemonicParsing="false" onAction="#changeCard" prefHeight="29.0" prefWidth="84.0" text="Cancel" />
-      <Button fx:id="buttonClear" layoutX="239.0" layoutY="466.0" mnemonicParsing="false" onAction="#changeCard" prefHeight="29.0" prefWidth="84.0" text="Clear" />
-      <Button fx:id="buttonDeposit1111" layoutX="239.0" layoutY="428.0" mnemonicParsing="false" onAction="#changeCard" prefHeight="29.0" prefWidth="84.0" />
+      <Button fx:id="buttonEnter" layoutX="239.0" layoutY="540.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Enter" />
+      <Button fx:id="buttonCancel" layoutX="239.0" layoutY="503.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Cancel" />
+      <Button fx:id="buttonClear" layoutX="239.0" layoutY="466.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Clear" />
+      <Button layoutX="239.0" layoutY="428.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" />
+      <Label fx:id="labelAmount" layoutX="194.0" layoutY="203.0" text="Amount:" />
+      <Rectangle fx:id="rectangleAmount" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="18.0" layoutX="242.0" layoutY="203.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label fx:id="labelWrittenAmount" layoutX="245.0" layoutY="203.0" text="WrittenAmount" />
    </children>
 </AnchorPane>
