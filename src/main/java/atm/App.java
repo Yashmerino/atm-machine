@@ -21,9 +21,11 @@ public class App extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/Scene1.fxml"));
-			String css = this.getClass().getResource("/Styles.css").toExternalForm();
+
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(css);
+			
+			// Sets css styles
+			scene.getStylesheets().add(this.getClass().getResource("/Styles.css").toExternalForm());
 
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("ATM Machine");
