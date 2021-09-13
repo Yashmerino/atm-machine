@@ -118,7 +118,7 @@ public class CardController {
 	/**
 	 * Switch scene to Scene1 to insert another card or create a new one
 	 * 
-	 * @param event
+	 * @param event - Event gotten from Scene
 	 */
 	public void changeCard(ActionEvent event) {
 		sceneController.changeToScene1(event);
