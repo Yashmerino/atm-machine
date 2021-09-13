@@ -12,3 +12,7 @@
 #labelInitialMessage{
 	-fx-font-size: 20px;
 }
+
+#labelReceipt{
+	-fx-alignment: top-left;
+}
