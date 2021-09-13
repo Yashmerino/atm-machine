@@ -8,12 +8,13 @@ import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 
 /**
  * CardController to create/insert cards and perform different actions
+ * 
  * @author Artiom
  *
  */
@@ -23,8 +24,16 @@ public class CardController {
 	@FXML
 	private Button buttonCreateCard;
 
-	// Stores currentCard(current .atm file)
+	// Stores current card(current .atm file)
 	private File currentCard;
+
+	// Controller to perform actions in the Scene1
+	private SceneController sceneController;
+
+	// Constructor to initialize variables
+	public CardController() {
+		sceneController = new SceneController();
+	}
 
 	/**
 	 * Gets the inserted card(.atm file)
@@ -54,6 +63,9 @@ public class CardController {
 
 			// Sets current card to opened card
 			currentCard = selectedCard;
+
+			// Changes the scene to Scene2
+			sceneController.changeToScene2(event);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,8 +107,20 @@ public class CardController {
 			// Sets current card to new created card
 			currentCard = newCard;
 
+			// Changes the scene to Scene2
+			sceneController.changeToScene2(event);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Switch scene to Scene1 to insert another card or create a new one
+	 * 
+	 * @param event
+	 */
+	public void changeCard(ActionEvent event) {
+		sceneController.changeToScene1(event);
 	}
 }
