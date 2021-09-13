@@ -116,7 +116,7 @@ public class CardController {
 	}
 
 	/**
-	 * Switch scene to Scene1 to insert another card or create a new one
+	 * Switches scene to Scene1 to insert another card or create a new one
 	 * 
 	 * @param event - Event gotten from Scene
 	 */
