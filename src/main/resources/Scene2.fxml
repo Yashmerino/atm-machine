@@ -5,34 +5,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atm.CardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atm.ActionHandler">
    <children>
-      <Button fx:id="buttonLogout" layoutX="682.0" layoutY="540.0" mnemonicParsing="false" onAction="#changeCard" prefHeight="29.0" prefWidth="84.0" text="Logout" />
-      <Button fx:id="buttonWithdraw" layoutX="35.0" layoutY="402.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Withdraw" />
-      <Button fx:id="buttonDeposit" layoutX="35.0" layoutY="440.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Deposit" />
+      <Button fx:id="buttonLogout" layoutX="682.0" layoutY="540.0" mnemonicParsing="false" onAction="#logout" prefHeight="29.0" prefWidth="84.0" text="Logout" />
+      <Button fx:id="buttonWithdraw" layoutX="35.0" layoutY="402.0" mnemonicParsing="false" onAction="#withdraw" prefHeight="29.0" prefWidth="84.0" text="Withdraw" />
+      <Button fx:id="buttonDeposit" layoutX="35.0" layoutY="440.0" mnemonicParsing="false" onAction="#deposit" prefHeight="29.0" prefWidth="84.0" text="Deposit" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1c991c" height="363.0" layoutX="35.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="565.0" />
       <Label fx:id="labelBalance" layoutX="42.0" layoutY="39.0" text="Balance: 0" />
       <Label fx:id="labelTitle" alignment="CENTER" layoutY="5.0" prefHeight="18.0" prefWidth="800.0" text="ATM Machine" textAlignment="CENTER" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="363.0" layoutX="618.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="149.0" />
       <Label fx:id="labelReceipt" alignment="TOP_LEFT" layoutX="627.0" layoutY="39.0" prefHeight="346.0" prefWidth="131.0" text="Receipt" />
-      <Button fx:id="button1" layoutX="336.0" layoutY="428.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="1" />
-      <Button fx:id="button2" layoutX="381.0" layoutY="428.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="2" />
-      <Button fx:id="button3" layoutX="426.0" layoutY="428.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="3" />
-      <Button fx:id="button4" layoutX="336.0" layoutY="466.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="4" />
-      <Button fx:id="button5" layoutX="381.0" layoutY="466.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="5" />
-      <Button fx:id="button6" layoutX="426.0" layoutY="466.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="6" />
-      <Button fx:id="button7" layoutX="336.0" layoutY="503.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="7" />
-      <Button fx:id="button8" layoutX="381.0" layoutY="503.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="8" />
-      <Button fx:id="button9" layoutX="426.0" layoutY="503.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="9" />
-      <Button fx:id="buttonDot" layoutX="336.0" layoutY="540.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="." />
-      <Button fx:id="button0" layoutX="381.0" layoutY="540.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="0" />
-      <Button fx:id="button00" layoutX="426.0" layoutY="540.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" text="00" />
+      <Button fx:id="buttonOne" layoutX="336.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleButtonOne" prefHeight="30.0" prefWidth="38.0" text="1" />
+      <Button fx:id="buttonTwo" layoutX="381.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleButtonTwo" prefHeight="30.0" prefWidth="38.0" text="2" />
+      <Button fx:id="buttonThree" layoutX="426.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleButtonThree" prefHeight="30.0" prefWidth="38.0" text="3" />
+      <Button fx:id="buttonFour" layoutX="336.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonFour" prefHeight="30.0" prefWidth="38.0" text="4" />
+      <Button fx:id="buttonFive" layoutX="381.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonFive" prefHeight="30.0" prefWidth="38.0" text="5" />
+      <Button fx:id="buttonSix" layoutX="426.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonSix" prefHeight="30.0" prefWidth="38.0" text="6" />
+      <Button fx:id="buttonSeven" layoutX="336.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleButtonSeven" prefHeight="30.0" prefWidth="38.0" text="7" />
+      <Button fx:id="buttonEight" layoutX="381.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleButtonEight" prefHeight="30.0" prefWidth="38.0" text="8" />
+      <Button fx:id="buttonNine" layoutX="426.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleButtonNine" prefHeight="30.0" prefWidth="38.0" text="9" />
+      <Button fx:id="buttonDot" layoutX="336.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleButtonDot" prefHeight="30.0" prefWidth="38.0" text="." />
+      <Button fx:id="buttonZero" layoutX="381.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleButtonZero" prefHeight="30.0" prefWidth="38.0" text="0" />
+      <Button fx:id="buttonZeroZero" layoutX="426.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleButtonZeroZero" prefHeight="30.0" prefWidth="38.0" text="00" />
       <Button fx:id="buttonEnter" layoutX="239.0" layoutY="540.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Enter" />
-      <Button fx:id="buttonCancel" layoutX="239.0" layoutY="503.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Cancel" />
-      <Button fx:id="buttonClear" layoutX="239.0" layoutY="466.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Clear" />
+      <Button fx:id="buttonCancel" layoutX="239.0" layoutY="503.0" mnemonicParsing="false" onAction="#cancel" prefHeight="29.0" prefWidth="84.0" text="Cancel" />
+      <Button fx:id="buttonClear" layoutX="239.0" layoutY="466.0" mnemonicParsing="false" onAction="#clear" prefHeight="29.0" prefWidth="84.0" text="Clear" />
       <Button layoutX="239.0" layoutY="428.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" />
       <Label fx:id="labelAmount" layoutX="194.0" layoutY="203.0" text="Amount:" />
       <Rectangle fx:id="rectangleAmount" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="18.0" layoutX="242.0" layoutY="203.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Label fx:id="labelWrittenAmount" layoutX="245.0" layoutY="203.0" text="WrittenAmount" />
+      <Label fx:id="labelWrittenAmount" layoutX="245.0" layoutY="203.0" />
    </children>
 </AnchorPane>
