@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Random;
+import java.util.Scanner;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,13 +57,24 @@ public class CardController {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error");
 				alert.setHeaderText(null);
-				alert.setContentText("This is not a .atm file! Create a card if you don't have one!");
+				alert.setContentText("This is not a .atm file! Create a card if you don't have one.");
 				alert.showAndWait();
 				return;
 			}
 
-			// Sets current card to opened card
-			currentCard = selectedCard;
+			// Check the card if it is valid before opening Scene2
+			if (cardIsOk(selectedCard)) {
+				// Sets current card to selected card
+				currentCard = selectedCard;
+
+			} else {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText(null);
+				alert.setContentText("The card is corrupted! Please select a valid card or create a new one.");
+				alert.showAndWait();
+				return;
+			}
 
 			// Changes the scene to Scene2
 			sceneController.changeToScene2(event);
@@ -98,8 +110,9 @@ public class CardController {
 
 			Random random = new Random();
 
-			// Generates random number and sets balance to 0
-			writer.write("number: " + random.ints(1000, 9999).findFirst().getAsInt() + "\nbalance: 0");
+			// Generates random number, sets balance to zero and generates a random pin
+			writer.write("number: " + random.ints(1000, 9999).findFirst().getAsInt() + "\nbalance: 0" + "\npin: "
+					+ random.ints(1000, 9999).findFirst().getAsInt());
 
 			// Closes the opened file
 			writer.close();
@@ -122,5 +135,37 @@ public class CardController {
 	 */
 	public void changeCard(ActionEvent event) {
 		sceneController.changeToScene1(event);
+	}
+
+	/**
+	 * Checks if the selected card by user is valid
+	 * 
+	 * @param selectedCard - The card user selected
+	 */
+	private boolean cardIsOk(File selectedCard) {
+		try {
+			Scanner reader = new Scanner(selectedCard);
+
+			while (reader.hasNextLine()) {
+				// String that stores a whole line from the file
+				String data = reader.nextLine();
+
+				// Checks if number, balance and pin fields are present
+				if (data.substring(0, 8).equals("number: ")) {
+					continue;
+				} else if (data.substring(0, 9).equals("balance: ")) {
+					continue;
+				} else if (data.substring(0, 5).equals("pin: ")) {
+					continue;
+				} else {
+					return false;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// If everything went fine return true
+		return true;
 	}
 }
