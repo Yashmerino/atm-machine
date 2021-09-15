@@ -3,11 +3,11 @@ package atm;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.net.URL;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
-import javax.sql.DataSource;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,12 +41,16 @@ public class ActionHandler implements Initializable {
 	@FXML
 	private Label labelNumber;
 
+	// Receipt label
+	@FXML
+	private Label labelReceipt;
+
 	// Int that stores card's balance
 	double balance;
 
 	// Int that stores card's number
 	int number;
-	
+
 	// Int that stores card's pin
 	int pin;
 
@@ -109,9 +113,14 @@ public class ActionHandler implements Initializable {
 	 */
 	public void enter(ActionEvent event) {
 		// Get the value written by user
-		setBalance(Double.parseDouble(labelWrittenAmount.getText()));
+		double amount = Double.parseDouble(labelWrittenAmount.getText());
+		setBalance(amount);
 		updateCard();
 		
+		if (amount != 0) {
+			generateReceipt(Double.parseDouble(labelWrittenAmount.getText()));
+		}
+
 		setVisibleAmountComponents(false);
 		clear(event);
 	}
@@ -272,7 +281,7 @@ public class ActionHandler implements Initializable {
 					// Set number
 					number = Integer.parseInt(data.substring(8, data.length()));
 					labelNumber.setText("Number: " + number);
-				} else if(data.substring(0, 5).equals("pin: ")) {
+				} else if (data.substring(0, 5).equals("pin: ")) {
 					// Set pin
 					pin = Integer.parseInt(data.substring(5, data.length()));
 				}
@@ -333,13 +342,24 @@ public class ActionHandler implements Initializable {
 			Random random = new Random();
 
 			// Generates random number, sets balance to zero and generates a random pin
-			writer.write("number: " + number + "\nbalance: " + balance + "\npin: "
-					+ pin);
+			writer.write("number: " + number + "\nbalance: " + balance + "\npin: " + pin);
 
 			// Closes the opened file
 			writer.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Generates receipt for last transaction
+	 * 
+	 * @param amount - Value that was deposited/withdrawed
+	 */
+	private void generateReceipt(double amount) {
+		Date date = new Date();
+		
+		labelReceipt.setText("The transaction is completed. \n" + DateFormat.getDateTimeInstance().format(date) + ".\nAmount: " + amount
+				+ "\nCard number: " + number + "\nBalance: " + balance);
 	}
 }
