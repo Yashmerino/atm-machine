@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atm.CardController">
+   <children>
+      <TextField fx:id="textFieldPin" layoutX="206.0" layoutY="234.0" />
+      <Label layoutX="177.0" layoutY="238.0" text="PIN:" />
+      <Label fx:id="labelEnterPin" alignment="CENTER" layoutY="139.0" prefHeight="18.0" prefWidth="600.0" text="Please enter your PIN code:" />
+      <Button fx:id="buttonConfirm" layoutX="365.0" layoutY="234.0" mnemonicParsing="false" onAction="#checkPin" text="Confirm" />
+   </children>
+</AnchorPane>
