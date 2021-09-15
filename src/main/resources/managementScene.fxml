@@ -14,7 +14,7 @@
       <Label fx:id="labelBalance" layoutX="40.0" layoutY="57.0" text="Balance: 0" />
       <Label fx:id="labelTitle" alignment="CENTER" layoutY="5.0" prefHeight="18.0" prefWidth="800.0" text="ATM Machine" textAlignment="CENTER" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="363.0" layoutX="618.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="149.0" />
-      <Label fx:id="labelReceipt" alignment="TOP_LEFT" layoutX="627.0" layoutY="39.0" prefHeight="346.0" prefWidth="131.0" text="Receipt" />
+      <Label fx:id="labelReceipt" alignment="TOP_LEFT" layoutX="627.0" layoutY="39.0" prefHeight="346.0" prefWidth="131.0" wrapText="true" />
       <Button fx:id="buttonOne" layoutX="336.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleButtonOne" prefHeight="30.0" prefWidth="38.0" text="1" />
       <Button fx:id="buttonTwo" layoutX="381.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleButtonTwo" prefHeight="30.0" prefWidth="38.0" text="2" />
       <Button fx:id="buttonThree" layoutX="426.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleButtonThree" prefHeight="30.0" prefWidth="38.0" text="3" />
