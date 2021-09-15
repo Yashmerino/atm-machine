@@ -1,6 +1,9 @@
 package atm;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -38,8 +41,14 @@ public class ActionHandler implements Initializable {
 	@FXML
 	private Label labelNumber;
 
-	// Int that stores balance
-	int balance;
+	// Int that stores card's balance
+	double balance;
+
+	// Int that stores card's number
+	int number;
+	
+	// Int that stores card's pin
+	int pin;
 
 	// State object that stores current state of action. Deposit/Withdraw
 	State state;
@@ -101,6 +110,7 @@ public class ActionHandler implements Initializable {
 	public void enter(ActionEvent event) {
 		// Get the value written by user
 		setBalance(Double.parseDouble(labelWrittenAmount.getText()));
+		updateCard();
 		
 		setVisibleAmountComponents(false);
 		clear(event);
@@ -260,7 +270,11 @@ public class ActionHandler implements Initializable {
 					labelBalance.setText("Balance: " + data.substring(9, data.length()));
 				} else if (data.substring(0, 8).equals("number: ")) {
 					// Set number
-					labelNumber.setText("Number: " + data.substring(8, data.length()));
+					number = Integer.parseInt(data.substring(8, data.length()));
+					labelNumber.setText("Number: " + number);
+				} else if(data.substring(0, 5).equals("pin: ")) {
+					// Set pin
+					pin = Integer.parseInt(data.substring(5, data.length()));
 				}
 			}
 		} catch (Exception e) {
@@ -305,6 +319,27 @@ public class ActionHandler implements Initializable {
 		} else {
 			balance -= value;
 			labelBalance.setText("Balance: " + balance);
+		}
+	}
+
+	/**
+	 * Updates the card's information
+	 */
+	private void updateCard() {
+		try {
+			// Creates BufferedWriter to write info about the card
+			BufferedWriter writer = new BufferedWriter(new FileWriter(CardController.currentCard));
+
+			Random random = new Random();
+
+			// Generates random number, sets balance to zero and generates a random pin
+			writer.write("number: " + number + "\nbalance: " + balance + "\npin: "
+					+ pin);
+
+			// Closes the opened file
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
