@@ -11,7 +11,7 @@
       <Button fx:id="buttonWithdraw" layoutX="35.0" layoutY="402.0" mnemonicParsing="false" onAction="#withdraw" prefHeight="29.0" prefWidth="84.0" text="Withdraw" />
       <Button fx:id="buttonDeposit" layoutX="35.0" layoutY="440.0" mnemonicParsing="false" onAction="#deposit" prefHeight="29.0" prefWidth="84.0" text="Deposit" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1c991c" height="363.0" layoutX="35.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="565.0" />
-      <Label fx:id="labelBalance" layoutX="42.0" layoutY="39.0" text="Balance: 0" />
+      <Label fx:id="labelBalance" layoutX="40.0" layoutY="57.0" text="Balance: 0" />
       <Label fx:id="labelTitle" alignment="CENTER" layoutY="5.0" prefHeight="18.0" prefWidth="800.0" text="ATM Machine" textAlignment="CENTER" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="363.0" layoutX="618.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="149.0" />
       <Label fx:id="labelReceipt" alignment="TOP_LEFT" layoutX="627.0" layoutY="39.0" prefHeight="346.0" prefWidth="131.0" text="Receipt" />
@@ -34,5 +34,6 @@
       <Label fx:id="labelAmount" layoutX="194.0" layoutY="203.0" text="Amount:" />
       <Rectangle fx:id="rectangleAmount" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="18.0" layoutX="242.0" layoutY="203.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Label fx:id="labelWrittenAmount" layoutX="245.0" layoutY="203.0" />
+      <Label fx:id="labelNumber" layoutX="40.0" layoutY="39.0" text="Number: 1234" />
    </children>
 </AnchorPane>
