@@ -12,6 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Rectangle;
 
+enum State {
+	WITHDRAW, DEPOSIT
+};
+
 /**
  * Class that perform actions when buttons clicked
  * 
@@ -34,9 +38,17 @@ public class ActionHandler implements Initializable {
 	@FXML
 	private Label labelNumber;
 
+	// Int that stores balance
+	int balance;
+
+	// State object that stores current state of action. Deposit/Withdraw
+	State state;
+
 	public void initialize(URL location, ResourceBundle resources) {
 		setVisibleAmountComponents(false);
 		initializeCardInformation();
+
+		balance = getBalanceFromFile();
 	}
 
 	/**
@@ -55,6 +67,7 @@ public class ActionHandler implements Initializable {
 	 * @param event - Event gotten from Scene
 	 */
 	public void withdraw(ActionEvent event) {
+		state = State.WITHDRAW;
 		setVisibleAmountComponents(true);
 		clear(event);
 	}
@@ -65,6 +78,7 @@ public class ActionHandler implements Initializable {
 	 * @param event - Event gotten from Scene
 	 */
 	public void deposit(ActionEvent event) {
+		state = State.DEPOSIT;
 		setVisibleAmountComponents(true);
 		clear(event);
 	}
@@ -80,9 +94,22 @@ public class ActionHandler implements Initializable {
 	}
 
 	/**
+	 * Performs the action. Deposit/Withdraw
+	 * 
+	 * @param event - Event gotten from Scene
+	 */
+	public void enter(ActionEvent event) {
+		// Get the value written by user
+		setBalance(Double.parseDouble(labelWrittenAmount.getText()));
+		
+		setVisibleAmountComponents(false);
+		clear(event);
+	}
+
+	/**
 	 * Clears the written amount
 	 * 
-	 * @param event - Even gotten from Scene
+	 * @param event - Event gotten from Scene
 	 */
 	public void clear(ActionEvent event) {
 		labelWrittenAmount.setText("");
@@ -91,10 +118,10 @@ public class ActionHandler implements Initializable {
 	/**
 	 * Adds a character to written amount
 	 * 
-	 * @param digit - Digit you add
+	 * @param ch - Character you add to written amount
 	 */
-	private void addCharToAmount(String digit) {
-		labelWrittenAmount.setText(labelWrittenAmount.getText() + digit);
+	private void addCharToAmount(String ch) {
+		labelWrittenAmount.setText(labelWrittenAmount.getText() + ch);
 	}
 
 	/**
@@ -238,6 +265,46 @@ public class ActionHandler implements Initializable {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Returns balance from file
+	 * 
+	 * @return - int value of balance
+	 */
+	private int getBalanceFromFile() {
+		try {
+			Scanner reader = new Scanner(CardController.currentCard);
+
+			while (reader.hasNextLine()) {
+				// String that stores a whole line from the file
+				String data = reader.nextLine();
+
+				// Checks if data stores balance/number information
+				if (data.substring(0, 9).equals("balance: ")) {
+					// Set balance
+					return Integer.parseInt(data.substring(9, data.length()));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	/**
+	 * Changes the value of balance in dependance of value and state
+	 * 
+	 * @param value - Value to deposit or withdraw to balance
+	 */
+	private void setBalance(double value) {
+		if (state == State.DEPOSIT) {
+			balance += value;
+			labelBalance.setText("Balance: " + balance);
+		} else {
+			balance -= value;
+			labelBalance.setText("Balance: " + balance);
 		}
 	}
 }
