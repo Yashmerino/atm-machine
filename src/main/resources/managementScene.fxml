@@ -27,7 +27,7 @@
       <Button fx:id="buttonDot" layoutX="336.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleButtonDot" prefHeight="30.0" prefWidth="38.0" text="." />
       <Button fx:id="buttonZero" layoutX="381.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleButtonZero" prefHeight="30.0" prefWidth="38.0" text="0" />
       <Button fx:id="buttonZeroZero" layoutX="426.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleButtonZeroZero" prefHeight="30.0" prefWidth="38.0" text="00" />
-      <Button fx:id="buttonEnter" layoutX="239.0" layoutY="540.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" text="Enter" />
+      <Button fx:id="buttonEnter" layoutX="239.0" layoutY="540.0" mnemonicParsing="false" onAction="#enter" prefHeight="29.0" prefWidth="84.0" text="Enter" />
       <Button fx:id="buttonCancel" layoutX="239.0" layoutY="503.0" mnemonicParsing="false" onAction="#cancel" prefHeight="29.0" prefWidth="84.0" text="Cancel" />
       <Button fx:id="buttonClear" layoutX="239.0" layoutY="466.0" mnemonicParsing="false" onAction="#clear" prefHeight="29.0" prefWidth="84.0" text="Clear" />
       <Button layoutX="239.0" layoutY="428.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" />
