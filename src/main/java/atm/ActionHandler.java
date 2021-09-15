@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class ActionHandler implements Initializable {
 
+	// Withdraw/Deposit amount components
 	@FXML
 	private Rectangle rectangleAmount;
 	@FXML
@@ -35,7 +36,7 @@ public class ActionHandler implements Initializable {
 	 */
 	public void logout(ActionEvent event) {
 		SceneController sceneController = new SceneController();
-		sceneController.changeToScene1(event);
+		sceneController.switchToInsertScene(event);
 	}
 
 	/**
@@ -94,7 +95,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonOne(ActionEvent event) {
 		addCharToAmount("1");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonTwo clicked
 	 * 
@@ -103,7 +104,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonTwo(ActionEvent event) {
 		addCharToAmount("2");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonThree clicked
 	 * 
@@ -112,7 +113,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonThree(ActionEvent event) {
 		addCharToAmount("3");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonFour clicked
 	 * 
@@ -121,7 +122,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonFour(ActionEvent event) {
 		addCharToAmount("4");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonFive clicked
 	 * 
@@ -130,7 +131,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonFive(ActionEvent event) {
 		addCharToAmount("5");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonSix clicked
 	 * 
@@ -139,7 +140,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonSix(ActionEvent event) {
 		addCharToAmount("6");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonSeven clicked
 	 * 
@@ -148,7 +149,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonSeven(ActionEvent event) {
 		addCharToAmount("7");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonEight clicked
 	 * 
@@ -157,7 +158,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonEight(ActionEvent event) {
 		addCharToAmount("8");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonNine clicked
 	 * 
@@ -166,7 +167,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonNine(ActionEvent event) {
 		addCharToAmount("9");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonDot clicked
 	 * 
@@ -175,7 +176,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonDot(ActionEvent event) {
 		addCharToAmount(".");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonZero clicked
 	 * 
@@ -184,7 +185,7 @@ public class ActionHandler implements Initializable {
 	public void handleButtonZero(ActionEvent event) {
 		addCharToAmount("0");
 	}
-	
+
 	/**
 	 * Handles and perform actions when buttonZeroZero clicked
 	 * 
@@ -204,4 +205,5 @@ public class ActionHandler implements Initializable {
 		labelAmount.setVisible(value);
 		labelWrittenAmount.setVisible(value);
 	}
+
 }
