@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
 /**
@@ -25,8 +26,12 @@ public class CardController {
 	@FXML
 	private Button buttonCreateCard;
 
+	// Text field for inserting PIN code
+	@FXML
+	private TextField textFieldPin;
+
 	// Stores current card(current .atm file)
-	private File currentCard;
+	private static File currentCard;
 
 	// Controller to perform actions in the Scene1
 	private SceneController sceneController;
@@ -76,8 +81,8 @@ public class CardController {
 				return;
 			}
 
-			// Changes the scene to Scene2
-			sceneController.changeToScene2(event);
+			// Changes the scene to PinScene
+			sceneController.switchToPinScene(event);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,21 +125,12 @@ public class CardController {
 			// Sets current card to new created card
 			currentCard = newCard;
 
-			// Changes the scene to Scene2
-			sceneController.changeToScene2(event);
+			// Changes the scene to PinScene
+			sceneController.switchToPinScene(event);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * Switches scene to Scene1 to insert another card or create a new one
-	 * 
-	 * @param event - Event gotten from Scene
-	 */
-	public void changeCard(ActionEvent event) {
-		sceneController.changeToScene1(event);
 	}
 
 	/**
@@ -167,5 +163,49 @@ public class CardController {
 
 		// If everything went fine return true
 		return true;
+	}
+
+	/**
+	 * Returns PIN code of the current card
+	 * 
+	 * @return - current card's PIN Code
+	 */
+	private String getPin() {
+		try {
+			Scanner reader = new Scanner(currentCard);
+
+			while (reader.hasNextLine()) {
+				// String that stores a whole line from the file
+				String data = reader.nextLine();
+
+				// Checks if number, balance and pin fields are present
+				if (data.substring(0, 5).equals("pin: ")) {
+					// Return PIN code
+					return (data.substring(5, data.length()));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	/**
+	 * Check if the written PIN is correct
+	 * 
+	 * @param event - Event gotten from scene
+	 */
+	public void checkPin(ActionEvent event) {
+		if (getPin().equals(textFieldPin.getText())) {
+			sceneController.switchToManagementScene(event);
+		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("The written PIN code is not correct! Please try again.");
+			alert.showAndWait();
+			return;
+		}
 	}
 }
