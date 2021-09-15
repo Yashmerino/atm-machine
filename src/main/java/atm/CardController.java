@@ -31,7 +31,7 @@ public class CardController {
 	private TextField textFieldPin;
 
 	// Stores current card(current .atm file)
-	private static File currentCard;
+	public static File currentCard;
 
 	// Controller to perform actions in the Scene1
 	private SceneController sceneController;
@@ -178,7 +178,7 @@ public class CardController {
 				// String that stores a whole line from the file
 				String data = reader.nextLine();
 
-				// Checks if number, balance and pin fields are present
+				// Checks if data stores pin information
 				if (data.substring(0, 5).equals("pin: ")) {
 					// Return PIN code
 					return (data.substring(5, data.length()));
