@@ -2,6 +2,9 @@ package atm;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+
+import javax.sql.DataSource;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,8 +28,15 @@ public class ActionHandler implements Initializable {
 	@FXML
 	private Label labelWrittenAmount;
 
+	// Card information components
+	@FXML
+	private Label labelBalance;
+	@FXML
+	private Label labelNumber;
+
 	public void initialize(URL location, ResourceBundle resources) {
 		setVisibleAmountComponents(false);
+		initializeCardInformation();
 	}
 
 	/**
@@ -206,4 +216,28 @@ public class ActionHandler implements Initializable {
 		labelWrittenAmount.setVisible(value);
 	}
 
+	/**
+	 * Initializes information about card on the screen
+	 */
+	private void initializeCardInformation() {
+		try {
+			Scanner reader = new Scanner(CardController.currentCard);
+
+			while (reader.hasNextLine()) {
+				// String that stores a whole line from the file
+				String data = reader.nextLine();
+
+				// Checks if data stores balance/number information
+				if (data.substring(0, 9).equals("balance: ")) {
+					// Set balance
+					labelBalance.setText("Balance: " + data.substring(9, data.length()));
+				} else if (data.substring(0, 8).equals("number: ")) {
+					// Set number
+					labelNumber.setText("Number: " + data.substring(8, data.length()));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
