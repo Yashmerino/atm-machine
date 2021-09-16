@@ -41,6 +41,10 @@ public class ActionHandler implements Initializable {
 	@FXML
 	private Label labelNumber;
 
+	// Label that notifies about an error
+	@FXML
+	private Label labelError;
+
 	// Receipt label
 	@FXML
 	private Label labelReceipt;
@@ -60,6 +64,8 @@ public class ActionHandler implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		setVisibleAmountComponents(false);
 		initializeCardInformation();
+
+		labelError.setVisible(false);
 
 		balance = getBalanceFromFile();
 	}
@@ -103,6 +109,7 @@ public class ActionHandler implements Initializable {
 	 */
 	public void cancel(ActionEvent event) {
 		setVisibleAmountComponents(false);
+		labelError.setVisible(false);
 		clear(event);
 	}
 
@@ -114,15 +121,18 @@ public class ActionHandler implements Initializable {
 	public void enter(ActionEvent event) {
 		// Get the value written by user
 		double amount = Double.parseDouble(labelWrittenAmount.getText());
-		setBalance(amount);
-		updateCard();
 		
-		if (amount != 0) {
-			generateReceipt(Double.parseDouble(labelWrittenAmount.getText()));
-		}
+		if (setBalance(amount)) {
+			updateCard();
 
-		setVisibleAmountComponents(false);
-		clear(event);
+			if (amount != 0) {
+				generateReceipt(amount);
+			}
+
+			labelError.setVisible(false);
+			setVisibleAmountComponents(false);
+			clear(event);
+		}
 	}
 
 	/**
@@ -131,6 +141,7 @@ public class ActionHandler implements Initializable {
 	 * @param event - Event gotten from Scene
 	 */
 	public void clear(ActionEvent event) {
+		labelError.setVisible(false);
 		labelWrittenAmount.setText("");
 	}
 
@@ -294,9 +305,9 @@ public class ActionHandler implements Initializable {
 	/**
 	 * Returns balance from file
 	 * 
-	 * @return - int value of balance
+	 * @return - double value of balance
 	 */
-	private int getBalanceFromFile() {
+	private double getBalanceFromFile() {
 		try {
 			Scanner reader = new Scanner(CardController.currentCard);
 
@@ -307,13 +318,13 @@ public class ActionHandler implements Initializable {
 				// Checks if data stores balance/number information
 				if (data.substring(0, 9).equals("balance: ")) {
 					// Set balance
-					return Integer.parseInt(data.substring(9, data.length()));
+					return Double.parseDouble(data.substring(9, data.length()));
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return 0.0;
 	}
 
 	/**
@@ -321,13 +332,25 @@ public class ActionHandler implements Initializable {
 	 * 
 	 * @param value - Value to deposit or withdraw to balance
 	 */
-	private void setBalance(double value) {
+	private boolean setBalance(double value) {
 		if (state == State.DEPOSIT) {
 			balance += value;
 			labelBalance.setText("Balance: " + balance);
+			
+			return true;
 		} else {
+			// If after withdrawing balance will be less than 0
+			if (balance - value < 0) {
+				labelError.setText("You don't have enough money on your balance!");
+				labelError.setVisible(true);
+				
+				return false;
+			}
+
 			balance -= value;
 			labelBalance.setText("Balance: " + balance);
+			
+			return true;
 		}
 	}
 
@@ -354,12 +377,13 @@ public class ActionHandler implements Initializable {
 	/**
 	 * Generates receipt for last transaction
 	 * 
+	 * 
 	 * @param amount - Value that was deposited/withdrawed
 	 */
 	private void generateReceipt(double amount) {
 		Date date = new Date();
-		
-		labelReceipt.setText("The transaction is completed. \n" + DateFormat.getDateTimeInstance().format(date) + ".\nAmount: " + amount
-				+ "\nCard number: " + number + "\nBalance: " + balance);
+
+		labelReceipt.setText("The transaction is completed. \n" + DateFormat.getDateTimeInstance().format(date)
+				+ ".\nAmount: " + amount + "\nCard number: " + number + "\nBalance: " + balance);
 	}
 }
