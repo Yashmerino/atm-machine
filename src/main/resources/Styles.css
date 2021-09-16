@@ -20,3 +20,8 @@
 #labelEnterPin{
 	-fx-font-size: 20 px;
 }
+
+#labelError{
+	-fx-font-size: 18px;
+	-fx-text-fill: "red";
+}
