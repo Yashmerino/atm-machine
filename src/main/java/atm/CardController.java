@@ -125,6 +125,13 @@ public class CardController {
 			// Sets current card to new created card
 			currentCard = newCard;
 
+			// Tell user the PIN code
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Success");
+			alert.setHeaderText(null);
+			alert.setContentText("Your PIN code is: " + getPin());
+			alert.showAndWait();
+			
 			// Changes the scene to PinScene
 			sceneController.switchToPinScene(event);
 
