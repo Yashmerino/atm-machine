@@ -50,17 +50,17 @@ public class ActionHandler implements Initializable {
 	private Label labelReceipt;
 
 	// Int that stores card's balance
-	double balance;
+	private double balance;
 
 	// Int that stores card's number
-	int number;
+	private int number;
 
 	// Int that stores card's pin
-	int pin;
+	private int pin;
 
 	// State object that stores current state of action. Deposit/Withdraw
 	State state;
-
+	
 	public void initialize(URL location, ResourceBundle resources) {
 		setVisibleAmountComponents(false);
 		initializeCardInformation();
