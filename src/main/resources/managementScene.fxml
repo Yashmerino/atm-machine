@@ -35,5 +35,6 @@
       <Rectangle fx:id="rectangleAmount" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="18.0" layoutX="242.0" layoutY="203.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Label fx:id="labelWrittenAmount" layoutX="245.0" layoutY="203.0" />
       <Label fx:id="labelNumber" layoutX="40.0" layoutY="39.0" text="Number: 1234" />
+      <Label fx:id="labelError" alignment="CENTER" layoutX="36.0" layoutY="145.0" prefHeight="18.0" prefWidth="565.0" text="ERROR" />
    </children>
 </AnchorPane>
