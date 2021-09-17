@@ -29,7 +29,7 @@ public class CardController {
 	// Text field for inserting PIN code
 	@FXML
 	private TextField textFieldPin;
-	
+
 	// Stores current card(current .atm file)
 	public static File currentCard;
 
@@ -131,7 +131,7 @@ public class CardController {
 			alert.setHeaderText(null);
 			alert.setContentText("Your PIN code is: " + getPin());
 			alert.showAndWait();
-			
+
 			// Changes the scene to PinScene
 			sceneController.switchToPinScene(event);
 
