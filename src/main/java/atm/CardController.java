@@ -155,15 +155,18 @@ public class CardController {
 
 				// Checks if number, balance and pin fields are present
 				if (data.substring(0, 8).equals("number: ")) {
-					continue;
+
 				} else if (data.substring(0, 9).equals("balance: ")) {
-					continue;
+
 				} else if (data.substring(0, 5).equals("pin: ")) {
-					continue;
+
 				} else {
 					return false;
 				}
 			}
+
+			reader.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -191,6 +194,9 @@ public class CardController {
 					return (data.substring(5, data.length()));
 				}
 			}
+
+			reader.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

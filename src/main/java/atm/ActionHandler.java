@@ -60,7 +60,7 @@ public class ActionHandler implements Initializable {
 
 	// State object that stores current state of action. Deposit/Withdraw
 	State state;
-	
+
 	public void initialize(URL location, ResourceBundle resources) {
 		setVisibleAmountComponents(false);
 		initializeCardInformation();
@@ -121,7 +121,7 @@ public class ActionHandler implements Initializable {
 	public void enter(ActionEvent event) {
 		// Get the value written by user
 		double amount = Double.parseDouble(labelWrittenAmount.getText());
-		
+
 		if (setBalance(amount)) {
 			updateCard();
 
@@ -297,6 +297,8 @@ public class ActionHandler implements Initializable {
 					pin = Integer.parseInt(data.substring(5, data.length()));
 				}
 			}
+			
+			reader.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -321,6 +323,9 @@ public class ActionHandler implements Initializable {
 					return Double.parseDouble(data.substring(9, data.length()));
 				}
 			}
+
+			reader.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -336,20 +341,20 @@ public class ActionHandler implements Initializable {
 		if (state == State.DEPOSIT) {
 			balance += value;
 			labelBalance.setText("Balance: " + balance);
-			
+
 			return true;
 		} else {
 			// If after withdrawing balance will be less than 0
 			if (balance - value < 0) {
 				labelError.setText("You don't have enough money on your balance!");
 				labelError.setVisible(true);
-				
+
 				return false;
 			}
 
 			balance -= value;
 			labelBalance.setText("Balance: " + balance);
-			
+
 			return true;
 		}
 	}
@@ -361,8 +366,6 @@ public class ActionHandler implements Initializable {
 		try {
 			// Creates BufferedWriter to write info about the card
 			BufferedWriter writer = new BufferedWriter(new FileWriter(CardController.currentCard));
-
-			Random random = new Random();
 
 			// Generates random number, sets balance to zero and generates a random pin
 			writer.write("number: " + number + "\nbalance: " + balance + "\npin: " + pin);
